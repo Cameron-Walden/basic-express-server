@@ -1,9 +1,11 @@
 'use strict';
 
+const unexpectedErrorHandler = require('../error-handlers/500.js');
+
 module.exports = (request, response, next) => {
     let name = request.query.name;
     if(!name) {
-        next('You\'re getting an error when searching for a name');
+        next(unexpectedErrorHandler);
     } else {
         next();
     }
